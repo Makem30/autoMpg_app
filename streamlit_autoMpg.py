@@ -22,7 +22,7 @@ with col1:
                         
         st.altair_chart(chart, use_container_width=True)
 #-------------------------------------------------------------------------------------
-Content for the first column
+#Content for the first column
 with col2:
         data_aggregated = data.groupby('mpg').size().reset_index(name='count')
                         
