@@ -65,6 +65,18 @@ chart = alt.Chart(data).mark_point().encode(
 st.altair_chart(chart, use_container_width=True)
 #------------------------------------------------------------------------------------------
 
+# # Create the sidebar
+# st.sidebar.title("Car Details")
+# selected_car = st.sidebar.selectbox("Select Car:", data['car name'].unique())
+
+# # Filter data based on selected car
+# filtered_data = data[data['car name'] == selected_car]
+
+# # Display the data in a colored table
+# st.title("Selected Car Details")
+# st.data(filtered_data.style.background_gradient(cmap='viridis'))
+
+
 # Create the sidebar
 st.sidebar.title("Car Details")
 selected_car = st.sidebar.selectbox("Select Car:", data['car name'].unique())
@@ -74,5 +86,10 @@ filtered_data = data[data['car name'] == selected_car]
 
 # Display the data in a colored table
 st.title("Selected Car Details")
-st.data(filtered_data.style.background_gradient(cmap='viridis'))
+
+# Create a table with color formatting
+if not filtered_data.empty:
+    st.table(filtered_data[['mpg', 'cylinders', 'weight', 'origin', 'model year', 'acceleration']].style.background_gradient(cmap='viridis'))
+else:
+    st.write("No data found for the selected car.")
 
