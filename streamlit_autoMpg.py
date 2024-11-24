@@ -4,9 +4,9 @@ import altair as alt
 import numpy as np
 
 # Charger les données
-df2 = pd.read_csv('auto-mpg.csv', delimiter=",")
+# df2 = pd.read_csv('auto-mpg.csv', delimiter=",")
 
-# data = pd.read_csv('auto-mpg.csv')  # Remplacez 'auto-mpg.csv' par le chemin réel du fichier
+data = pd.read_csv('auto-mpg.csv')  # Remplacez 'auto-mpg.csv' par le chemin réel du fichier
 
 chart = alt.Chart(data).mark_rect().encode(
     alt.X("mpg:Q", bin=True),  # "mpg" est la colonne pour l'histogramme, bin=True crée des bins
