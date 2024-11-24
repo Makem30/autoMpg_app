@@ -66,24 +66,15 @@ chart = alt.Chart(data).mark_point().encode(
 st.altair_chart(chart, use_container_width=True)
 #------------------------------------------------------------------------------------------
 
-# # Create the sidebar
-# st.sidebar.title("Car Details")
-# selected_car = st.sidebar.selectbox("Select Car:", data['car name'].unique())
 
-# # Filter data based on selected car
-# filtered_data = data[data['car name'] == selected_car]
-
-# # Display the data in a colored table
-# st.title("Selected Car Details")
-# st.data(filtered_data.style.background_gradient(cmap='viridis'))
 
 
 # Create the sidebar
-st.sidebar.title("Car MPG Comparison")
+st.sidebar.title("Comparaison mpg vs car")
 
 # Select cars to compare
 selected_cars = st.sidebar.multiselect(
-    "Select Cars (at least 10):",
+    "Selectionner les voitures à comparer:",
     data['car name'].unique(),
     default=data['car name'].unique()[:10]  # Select first 10 cars by default
 )
@@ -97,7 +88,7 @@ chart = alt.Chart(filtered_data).mark_bar().encode(
     y='mpg:Q',
     color='origin:N'
 ).properties(
-    title="MPG Comparison of Selected Cars",
+    title="comparaison des voiture en fonction du mpg",
     width=600  # Adjust width as needed
 )
 
