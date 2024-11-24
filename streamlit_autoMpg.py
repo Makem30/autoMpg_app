@@ -30,6 +30,7 @@ tooltip=['mpg:N', 'count:Q']  # Tooltip shows Species and count
     width=400,
     height=400
             )
+   st.altair_chart(donut_chart, use_container_width=True)
 #----------------------------------------------------------------------
 
 with st.sidebar:
