@@ -42,3 +42,25 @@ st.altair_chart(donut_chart, use_container_width=True)
 with st.sidebar:
     st.title('DASHBOARD')
 
+# Charger les données
+# data = pd.read_csv('auto-mpg.csv')
+
+# Créer la sidebar
+st.sidebar.title("Comparateur de données")
+
+# Sélection des données à comparer
+x_axis = st.sidebar.selectbox("Axe des x", ["mpg", "cylinders", "weight", "acceleration"])
+y_axis = st.sidebar.selectbox("Axe des y", ["mpg", "cylinders", "weight", "acceleration"], index=1)  # index=1 pour sélectionner "cylinders" par défaut
+
+# Créer le graphique
+chart = alt.Chart(data).mark_point().encode(
+    x=x_axis,
+    y=y_axis,
+    color='origin:N'  # Colorer les points par origine
+).properties(
+    title=f"Comparaison de {x_axis} et {y_axis}"
+)
+
+# Afficher le graphique
+st.altair_chart(chart, use_container_width=True)
+
