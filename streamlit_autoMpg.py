@@ -74,5 +74,5 @@ filtered_data = data[data['car name'] == selected_car]
 
 # Display the data in a colored table
 st.title("Selected Car Details")
-st.dataframe(filtered_data.style.background_gradient(cmap='viridis'))
+st.data(filtered_data.style.background_gradient(cmap='viridis'))
 
