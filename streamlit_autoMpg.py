@@ -13,14 +13,14 @@ data = pd.read_csv('auto-mpg.csv', delimiter=",")  # Remplacez 'auto-mpg.csv' pa
 col1, col2 = st.columns([0.8,0.7],gap="large")
 
 with col1:
-        chart = alt.Chart(data).mark_rect().encode(
-        alt.X("mpg:Q", bin=True),  # "mpg" est la colonne pour l'histogramme, bin=True crée des bins
-        alt.Y('count()', stack=None)  # "count()" compte les valeurs dans chaque bin
+     chart = alt.Chart(data).mark_rect().encode(
+alt.X("mpg:Q", bin=True),  # "mpg" est la colonne pour l'histogramme, bin=True crée des bins
+alt.Y('count()', stack=None)  # "count()" compte les valeurs dans chaque bin
                 ).properties(
                         title='Histogramme de mpg'
                         )
                         
-        st.altair_chart(chart, use_container_width=True)
+st.altair_chart(chart, use_container_width=True)
 #-------------------------------------------------------------------------------------
 #Content for the first column
 with col2:
