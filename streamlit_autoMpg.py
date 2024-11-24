@@ -4,5 +4,5 @@ import altair as alt
 import numpy as np
 
 # Charger les données
-data = pd.read_csv('auto-mpg.csv', delimiter=",")
+df2 = pd.read_csv('auto-mpg.csv', delimiter=",")
 
