@@ -7,7 +7,7 @@ import numpy as np
 # df2 = pd.read_csv('auto-mpg.csv', delimiter=",")
 # Content for the second column
 
-        data = pd.read_csv('auto-mpg.csv', delimiter=",")  # Remplacez 'auto-mpg.csv' par le chemin réel du fichier
+data = pd.read_csv('auto-mpg.csv', delimiter=",")  # Remplacez 'auto-mpg.csv' par le chemin réel du fichier
 
 with col1:
         chart = alt.Chart(data).mark_rect().encode(
