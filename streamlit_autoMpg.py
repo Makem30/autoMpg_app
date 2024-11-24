@@ -79,18 +79,28 @@ st.altair_chart(chart, use_container_width=True)
 
 
 # Create the sidebar
-st.sidebar.title("MPG Filter")
-selected_mpg = st.sidebar.selectbox("Select MPG:", data['mpg'].unique())
+st.sidebar.title("Car MPG Comparison")
 
-# Filter data based on selected MPG
-filtered_data = data[data['mpg'] == selected_mpg]
+# Select cars to compare
+selected_cars = st.sidebar.multiselect(
+    "Select Cars (at least 10):",
+    data['car name'].unique(),
+    default=data['car name'].unique()[:10]  # Select first 10 cars by default
+)
 
-# Display the data in a colored table
-st.title("Filtered Car Data")
+# Filter data based on selected cars
+filtered_data = data[data['car name'].isin(selected_cars)]
 
-# Create a table with color formatting
-if not filtered_data.empty:
-    st.table(filtered_data[['cylinders', 'weight', 'origin', 'model year', 'acceleration']].style.background_gradient(cmap='viridis')) 
-else:
-    st.write("No data found for the selected MPG.")
+# Create the bar chart
+chart = alt.Chart(filtered_data).mark_bar().encode(
+    x='car name:N',
+    y='mpg:Q',
+    color='origin:N'
+).properties(
+    title="MPG Comparison of Selected Cars",
+    width=600  # Adjust width as needed
+)
+
+# Display the chart
+st.altair_chart(chart, use_container_width=True)
 
