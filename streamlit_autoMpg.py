@@ -63,4 +63,16 @@ chart = alt.Chart(data).mark_point().encode(
 
 # Afficher le graphique
 st.altair_chart(chart, use_container_width=True)
+#------------------------------------------------------------------------------------------
+
+# Create the sidebar
+st.sidebar.title("Car Details")
+selected_car = st.sidebar.selectbox("Select Car:", data['car name'].unique())
+
+# Filter data based on selected car
+filtered_data = data[data['car name'] == selected_car]
+
+# Display the data in a colored table
+st.title("Selected Car Details")
+st.dataframe(filtered_data.style.background_gradient(cmap='viridis'))
 
